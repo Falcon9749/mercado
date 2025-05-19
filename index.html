@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lista de Compras</title>
+<style>
+  /* Reset básico */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 25px;
+    font-weight: 700;
+  }
+
+  form {
+    display: flex;
+    gap: 10px;
+  }
+
+  input[type="text"] {
+    flex: 1;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+
+  button.add-btn {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button.add-btn:hover {
+    background-color: #0056b3;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 25px;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f0f4ff;
+    margin-bottom: 12px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px #d2d8ff;
+    transition: background-color 0.3s ease;
+  }
+
+  li.checked {
+    background: #d4edda;
+    color: #155724;
+    text-decoration: line-through;
+  }
+
+  li label {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    cursor: pointer;
+  }
+
+  li input[type="checkbox"] {
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  button.delete-btn {
+    background: transparent;
+    border: none;
+    color: #dc3545;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.2s ease;
+  }
+
+  button.delete-btn:hover {
+    color: #a71d2a;
+  }
+
+  .remove-all-btn {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #dc3545;
+    border: none;
+    padding: 12px 0;
+    font-weight: 600;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .remove-all-btn:hover {
+    background-color: #a71d2a;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 20px;
+    }
+    input[type="text"], button.add-btn {
+      font-size: 14px;
+      padding: 10px;
+    }
+    li {
+      font-size: 14px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Lista de Compras</h1>
+    <form id="form">
+      <input type="text" id="itemInput" placeholder="Adicionar item..." autocomplete="off" />
+      <button type="submit" class="add-btn">Adicionar</button>
+    </form>
+    <ul id="shoppingList"></ul>
+    <button id="removeAllBtn" class="remove-all-btn">Remover Todos</button>
+  </div>
+
+  <script>
+    const form = document.getElementById('form');
+    const input = document.getElementById('itemInput');
+    const shoppingList = document.getElementById('shoppingList');
+    const removeAllBtn = document.getElementById('removeAllBtn');
+
+    // Função para criar um item na lista
+    function createListItem(text) {
+      const li = document.createElement('li');
+
+      const label = document.createElement('label');
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.addEventListener('change', () => {
+        li.classList.toggle('checked', checkbox.checked);
+      });
+
+      const span = document.createElement('span');
+      span.textContent = text;
+
+      label.appendChild(checkbox);
+      label.appendChild(span);
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = '×';
+      deleteBtn.className = 'delete-btn';
+      deleteBtn.title = 'Remover item';
+      deleteBtn.addEventListener('click', () => {
+        shoppingList.removeChild(li);
+      });
+
+      li.appendChild(label);
+      li.appendChild(deleteBtn);
+
+      return li;
+    }
+
+    // Adicionar item via formulário
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (text) {
+        const li = createListItem(text);
+        shoppingList.appendChild(li);
+        input.value = '';
+        input.focus();
+      }
+    });
+
+    // Remover todos os itens
+    removeAllBtn.addEventListener('click', () => {
+      if(confirm('Deseja realmente remover todos os itens?')) {
+        shoppingList.innerHTML = '';
+      }
+    });
+  </script>
+</body>
+</html>
+
