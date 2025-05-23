@@ -116,7 +116,7 @@ li.found {
   to {opacity: 1; transform: translateY(0);}
 }
 
-@@media (max-width: 400px) {
+@media (max-width: 400px) {
   .container, .login-container {
     padding: 15px;
     max-width: 90%;
