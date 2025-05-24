@@ -17,7 +17,8 @@ body {
 
 .container, .login-container {
   width: 100%;
-  max-width: 400px; /* largura máxima para evitar ficar muito grande */
+  max-width: 600px; /* largura máxima para evitar ficar muito grande */
+  max-height: 90%; /* Altura máxima para evitar ficar muito grande */
   padding: 20px;
   box-sizing: border-box;
   border-radius: 12px;
@@ -62,7 +63,7 @@ button:hover {
 }
 
 #clearBtn:hover {
-  background: #ff4d4d; /* vermelho vivo */
+  background: red; /* vermelho vivo */
   color: #fff;
   transform: scale(1.05);
 }
@@ -120,5 +121,12 @@ li.found {
   .container, .login-container {
     padding: 15px;
     max-width: 90%;
+  }
+}
+
+@media (max-height: 400px) {
+  .container, .login-container {
+    padding: 15px;
+    max-height: 90%;
   }
 }
