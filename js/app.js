@@ -77,7 +77,7 @@ function loadItems() {
           <input type="checkbox" ${item.found ? 'checked' : ''} data-key="${key}">
           ${item.nome} (${item.qtd} ${item.unidade})
         </span>
-        <button data-remove="${key}"><i class="fas fa-times"></i></button>
+        <button data-remove="${key}"><i class="bi-trash"></i></button>
       `;
       itemsList.appendChild(li);
     });
