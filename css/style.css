@@ -68,6 +68,9 @@ button:hover {
   transform: scale(1.05);
 }
 
+.bi-trash {
+  color: red;  
+}
 
 .input-group {
   display: flex;
