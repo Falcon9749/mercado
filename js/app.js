@@ -68,6 +68,19 @@ document.getElementById('addBtn').addEventListener('click', () => {
   document.getElementById('itemInput').value = '';
   document.getElementById('quantityInput').value = '1';
 });
+
+clearBtn.addEventListener('click', () => {
+  if (confirm('Tem certeza que deseja apagar todos os itens?')) {
+    remove(ref(db, 'compras/' + userId))
+      .then(() => {
+        alert('Todos os itens foram apagados!');
+      })
+      .catch((error) => {
+        console.error('Erro ao apagar:', error);
+      });
+  }
+});
+
  
 function loadItems() {
   const itemsRef = ref(db, 'compras/' + userId);
