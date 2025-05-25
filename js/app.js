@@ -68,18 +68,21 @@ document.getElementById('addBtn').addEventListener('click', () => {
   document.getElementById('itemInput').value = '';
   document.getElementById('quantityInput').value = '1';
 });
-
+ 
 function loadItems() {
   const itemsRef = ref(db, 'compras/' + userId);
   onValue(itemsRef, (snapshot) => {
     itemsList.innerHTML = '';
 
     let itemCount = 0;
+    let foundCount = 0;
 
     snapshot.forEach((childSnapshot) => {
       itemCount++;
       const item = childSnapshot.val();
       const key = childSnapshot.key;
+
+      if (item.found) foundCount++;
 
       const li = document.createElement('li');
       li.className = item.found ? 'found' : '';
@@ -91,20 +94,29 @@ function loadItems() {
       `;
 
       const editBtn = document.createElement('button');
-      editBtn.innerHTML = '<i class="bi-pencil"></i> Editar';
+      editBtn.innerHTML = '<i class="bi-pencil"></i>';
       editBtn.setAttribute('data-edit', key);
 
       const removeBtn = document.createElement('button');
       removeBtn.innerHTML = '<i class="bi-trash"></i>';
       removeBtn.setAttribute('data-remove', key);
 
+      // Cria o container para os botões lado a lado
+      const actionsDiv = document.createElement('div');
+      actionsDiv.style.display = 'inline-flex';
+      actionsDiv.style.gap = '5px';
+      actionsDiv.appendChild(editBtn);
+      actionsDiv.appendChild(removeBtn);
+
       li.appendChild(span);
-      li.appendChild(editBtn);
-      li.appendChild(removeBtn);
+      li.appendChild(actionsDiv);
       itemsList.appendChild(li);
     });
 
-    counterElement.textContent = `Total de itens: ${itemCount}`;
+    const counterElement = document.getElementById('counter');
+    if (counterElement) {
+      counterElement.textContent = `Total: ${itemCount} — Encontrados: ${foundCount}`;
+    }
 
     document.querySelectorAll('[data-key]').forEach(input => {
       input.addEventListener('change', (e) => {
@@ -123,7 +135,7 @@ function loadItems() {
     document.querySelectorAll('[data-edit]').forEach(btn => {
       btn.addEventListener('click', () => {
         const key = btn.getAttribute('data-edit');
-        const li = btn.parentElement;
+        const li = btn.closest('li');
         const span = li.querySelector('span');
 
         const currentText = span.textContent;
@@ -137,8 +149,8 @@ function loadItems() {
 
         span.style.display = 'none';
         btn.style.display = 'none';
-        li.insertBefore(input, btn);
-        li.insertBefore(saveBtn, btn);
+        li.insertBefore(input, li.querySelector('div'));
+        li.insertBefore(saveBtn, li.querySelector('div'));
 
         saveBtn.addEventListener('click', () => {
           const newValue = input.value.trim();
@@ -173,6 +185,3 @@ function loadItems() {
   });
 }
 
-document.getElementById('clearBtn').addEventListener('click', () => {
-  remove(ref(db, 'compras/' + userId));
-});
