@@ -94,29 +94,26 @@ function loadItems() {
       `;
 
       const editBtn = document.createElement('button');
-      editBtn.innerHTML = '<i class="bi-pencil"></i>';
+      editBtn.innerHTML = '<i class="bi-pencil"></i> Editar';
       editBtn.setAttribute('data-edit', key);
 
       const removeBtn = document.createElement('button');
       removeBtn.innerHTML = '<i class="bi-trash"></i>';
       removeBtn.setAttribute('data-remove', key);
 
-      // Cria o container para os botões lado a lado
+      // ✅ Envolver os botões num container flex
       const actionsDiv = document.createElement('div');
       actionsDiv.style.display = 'inline-flex';
-      actionsDiv.style.gap = '5px';
+      actionsDiv.style.gap = '5px'; // Espaço entre os botões
       actionsDiv.appendChild(editBtn);
       actionsDiv.appendChild(removeBtn);
 
       li.appendChild(span);
-      li.appendChild(actionsDiv);
+      li.appendChild(actionsDiv);  // ✅ Adiciona os dois botões agrupados
       itemsList.appendChild(li);
     });
 
-    const counterElement = document.getElementById('counter');
-    if (counterElement) {
-      counterElement.textContent = `Total: ${itemCount} — Encontrados: ${foundCount}`;
-    }
+    counterElement.textContent = `Total: ${itemCount} — Encontrados: ${foundCount}`;
 
     document.querySelectorAll('[data-key]').forEach(input => {
       input.addEventListener('change', (e) => {
@@ -184,4 +181,3 @@ function loadItems() {
     });
   });
 }
-
