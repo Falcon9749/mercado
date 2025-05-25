@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
   background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
   color: #fff;
   margin: 0;
@@ -17,8 +17,9 @@ body {
 
 .container, .login-container {
   width: 100%;
-  max-width: 600px; /* largura máxima para evitar ficar muito grande */
+  max-width: 500px; /* largura máxima para evitar ficar muito grande */
   max-height: 90%; /* Altura máxima para evitar ficar muito grande */
+  font-size: 20px;
   padding: 20px;
   box-sizing: border-box;
   border-radius: 12px;
@@ -31,7 +32,8 @@ body {
 }
 
 input, select {
-  width: 100%;
+  width: auto;
+  font-size: 20px;
   padding: 10px;
   margin: 8px 0;
   border: none;
@@ -41,7 +43,7 @@ input, select {
 button {
   background: #fff;
   color: #000DFF;
-  padding: 8px 12px;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
   margin-top: 10px;
@@ -87,7 +89,8 @@ ul {
 li {
   background: rgba(255,255,255,0.1);
   margin: 5px 0;
-  padding: 10px;
+  width: auto;
+  padding: 15px 20px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -102,6 +105,12 @@ li.found {
 
 .hidden {
   display: none;
+}
+
+#addBtn {
+    width: auto; /* ou um valor fixo: ex. 120px */
+    padding: 15px 20px; /* ajusta o tamanho interno */
+    font-size: 16px; /* ou maior, se quiser */
 }
 
 #loginError {
@@ -122,7 +131,9 @@ li.found {
 
 @media (max-width: 400px) {
   .container, .login-container {
+    width: 100%;
     padding: 15px;
-    max-width: 90%;
+    max-width: 400px;
+    font-size: 20px;
   }
 }
