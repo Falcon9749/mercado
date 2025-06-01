@@ -81,6 +81,32 @@ clearBtn.addEventListener('click', () => {
   }
 });
 
+const removeMarkedBtn = document.getElementById('removeMarkedBtn');
+
+removeMarkedBtn.addEventListener('click', () => {
+  if (confirm('Tem certeza que deseja excluir todos os itens marcados?')) {
+    const itemsRef = ref(db, 'compras/' + userId);
+    onValue(itemsRef, (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        const item = childSnapshot.val();
+        const key = childSnapshot.key;
+
+        if (item.found) {
+          const li = itemsList.querySelector(`[data-key="${key}"]`).closest('li');
+          if (li) {
+            li.classList.add('fade-out');  // ✅ Animação
+            setTimeout(() => {
+              remove(ref(db, 'compras/' + userId + '/' + key));
+            }, 500);
+          } else {
+            remove(ref(db, 'compras/' + userId + '/' + key));
+          }
+        }
+      });
+    }, { onlyOnce: true });
+  }
+});
+
  
 function loadItems() {
   const itemsRef = ref(db, 'compras/' + userId);

@@ -49,12 +49,12 @@ O arquivo principal é `index.html`, que contém a estrutura das duas principais
 3.  Mude os dados de acesso ao banco de dados FireBase para a sua conta no app.js
 ### Localise esse codigo no app.js para mudar de acordo com seu banco de dados
             const firebaseConfig = {
-                apiKey: "xxxxxx"
-                authDomain: "xxxxxxx"
-                databaseURL: "xxxxxxx"
-                projectId: "xxxxxx"
-                storageBucket: "xxxxxx"
-                messagingSenderId: "xxxxxxx"
+                apiKey: "xxxxxx",
+                authDomain: "xxxxxxx",
+                databaseURL: "xxxxxxx",
+                projectId: "xxxxxx",
+                storageBucket: "xxxxxx",
+                messagingSenderId: "xxxxxxx",
                 appId: "xxxxxxx"
             };
 
