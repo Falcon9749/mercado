@@ -1,4 +1,4 @@
-# Projeto Lista de Compras Interativa
+# Projeto Lista de Compras Interativa com banco de dados
 
 ## Visão Geral
 
