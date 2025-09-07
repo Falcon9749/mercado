@@ -40,9 +40,10 @@ input, select {
   border-radius: 8px;
 }
 
+/* Botâo Adicionar */
 button {
-  background: #fff;
-  color: #000DFF;
+  background: rgb(11, 228, 40);
+  color: black;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
@@ -53,15 +54,10 @@ button {
   gap: 5px;
 }
 
-button:hover {
-  background: #000DFF;
-  color: #fff;
-  transform: scale(1.05);
-}
-
+/* Botâo excluir tudo */
 #clearBtn {
   background: #fff;
-  color: #000DFF;
+  color: red;
 }
 
 #clearBtn:hover {
@@ -70,6 +66,28 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* Botão Excluir Marcados */
+#removeMarkedBtn {
+  background: #fff;
+  color: red;
+}
+
+#removeMarkedBtn:hover {
+  background: red; /* vermelho vivo */
+  color: #fff;
+  transform: scale(1.05);
+}
+
+#logoutBtn {
+  background: #fff;
+  color: red;
+}
+
+#logoutBtn:hover {
+  background: red; /* vermelho vivo */
+  color: #fff;
+  transform: scale(1.1);
+}
 .bi-trash {
   color: red;  
 }
