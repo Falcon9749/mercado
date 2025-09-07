@@ -40,9 +40,21 @@ input, select {
   border-radius: 8px;
 }
 
+/*Botão Login*/
+#loginBtn {
+  background: #fff;
+  color: #0b4413;
+}
+
+#loginBtn:hover {
+  background: #0be428; /* verde*/
+  color: black;
+  transform: scale(1.05);
+}
+
 /* Botâo Adicionar */
 button {
-  background: rgb(11, 228, 40);
+  background: #0be428;
   color: black;
   padding: 10px 15px;
   border: none;
@@ -78,15 +90,16 @@ button {
   transform: scale(1.05);
 }
 
+/* Botão Logout */
 #logoutBtn {
   background: #fff;
-  color: red;
+  color: #0b4413;
 }
 
 #logoutBtn:hover {
-  background: red; /* vermelho vivo */
-  color: #fff;
-  transform: scale(1.1);
+  background: #0be428; /* verde*/
+  color: black;
+  transform: scale(1.05);
 }
 .bi-trash {
   color: red;  
@@ -105,7 +118,7 @@ ul {
 }
 
 li {
-  background: rgba(255,255,255,0.1);
+  background: #ffffff1a;
   margin: 5px 0;
   width: auto;
   padding: 15px 20px;
