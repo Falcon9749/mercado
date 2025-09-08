@@ -5,7 +5,10 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
-  background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.567) 0%, rgba(6, 0, 0, 0.447) 100%),
+  url("/imagem/mercado.jpg");
+  background-size: cover;
+  background-position: center;
   color: #fff;
   margin: 0;
   padding: 0;
@@ -139,9 +142,9 @@ li.found {
 }
 
 #addBtn {
-    width: auto; /* ou um valor fixo: ex. 120px */
+    width: 155px; /* ou um valor fixo: ex. 120px */
     padding: 15px 20px; /* ajusta o tamanho interno */
-    font-size: 16px; /* ou maior, se quiser */
+    font-size: 25px; /* ou maior, se quiser */
 }
 
 #loginError {
