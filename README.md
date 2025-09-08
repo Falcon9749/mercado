@@ -12,20 +12,21 @@ O projeto é dividido em duas seções principais:
 
 1.  **Tela de Login:**
     * Campos para inserção de e-mail e senha.
-    * Botão "Entrar" para autenticação do usuário.
+    * Botão "Login" para autenticação do usuário.
     * Exibição de mensagens de erro em caso de falha no login.
 
 2.  **Aplicativo da Lista de Compras (após o login):**
     * **Adicionar Itens:**
         * Campo para nomear o item.
         * Campo para especificar a quantidade (com valor mínimo de 1).
-        * Seleção da unidade de medida (Unidade, Kg).
+        * Seleção da unidade de medida (Unidade, Kg e Caixa).
         * Botão "Adicionar" para incluir o item na lista.
     * **Visualização da Lista:**
         * Exibição dos itens adicionados em uma lista dinâmica.
         * (Presumivelmente, cada item da lista terá opções para edição ou remoção individual, dependendo da lógica em `js/app.js`).
     * **Ações da Lista:**
         * Botão "Limpar Tudo" para remover todos os itens da lista de uma vez.
+        * Botão "Limpar Marcados" para remover apenas os itens marcados.
         * Botão "Sair" para efetuar logout da aplicação e retornar à tela de login.
 
 ## Tecnologias Utilizadas
